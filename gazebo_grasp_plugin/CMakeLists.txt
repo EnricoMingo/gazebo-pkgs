@@ -28,7 +28,7 @@ find_package(gazebo REQUIRED)
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-  INCLUDE_DIRS include
+  INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include
   LIBRARIES gazebo_grasp_fix
   CATKIN_DEPENDS gazebo_ros geometry_msgs roscpp std_msgs
   DEPENDS gazebo 
@@ -42,7 +42,7 @@ catkin_package(
 ## Your package locations should be listed before other locations
 # include_directories(include)
 include_directories(
-  include
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
   ${catkin_INCLUDE_DIRS}
   ${GAZEBO_INCLUDE_DIRS}
 )
@@ -52,8 +52,10 @@ link_directories(
   ${catkin_LIBRARY_DIRS}
 )
 
+#message("CMAKE_CURRENT_SOURCE_DIR" ${CMAKE_CURRENT_SOURCE_DIR})
+
 ## Declare a cpp library
-add_library(gazebo_grasp_fix SHARED src/GazeboGraspFix.cpp src/GazeboGraspGripper.cpp)
+add_library(gazebo_grasp_fix SHARED ${CMAKE_CURRENT_SOURCE_DIR}/src/GazeboGraspFix.cpp ${CMAKE_CURRENT_SOURCE_DIR}/src/GazeboGraspGripper.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
