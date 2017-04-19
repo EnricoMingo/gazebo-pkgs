@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 2.8.12)
+if(COMMAND cmake_policy)
+    cmake_policy(SET CMP0003 OLD)
+    cmake_policy(SET CMP0005 NEW)
+    cmake_policy(SET CMP0017 NEW)
+endif(COMMAND cmake_policy)
+include(ExternalProject)
+PROJECT(gazebo-pkgs)
+
+include(${CMAKE_CURRENT_SOURCE_DIR}/gazebo_grasp_plugin/CMakeLists.txt)
+#include(${CMAKE_CURRENT_SOURCE_DIR}/gazebo_state_plugins/CMakeLists.txt)
+#include(${CMAKE_CURRENT_SOURCE_DIR}/gazebo_test_tools/CMakeLists.txt)
+#include(${CMAKE_CURRENT_SOURCE_DIR}/gazebo_world_plugin_loader/CMakeLists.txt)
